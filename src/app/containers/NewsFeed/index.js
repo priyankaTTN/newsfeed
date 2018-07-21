@@ -6,6 +6,8 @@ import {newsData} from './action';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 
+
+
 class NewsFeed extends React.Component {
     constructor(props){
         super(props);
@@ -21,19 +23,27 @@ class NewsFeed extends React.Component {
         const abc =_.get(this.props.newsFeed.detail,'data.articles');
         if(_.isEmpty(abc)) return null;
         return(
-            <div>
+            <div className="container">
+                <ul className="list-inline">
+                    <div className="row row-eq-height">
                 {abc.map((value, index) =>{
                     return(
-                        <li key={index}>
-                            <Title title={value.title} />
-                            <Images url={value.urlToImage} />
-                            <Description data={value.description} />
-                        </li>
+                    <div>
+                        {!(_.isEmpty(value.title)) && !(_.isEmpty(value.urlToImage)) && !(_.isEmpty(value.description)) ?
+                    <li className="col-md-4" key={index} onClick={()=>window.location.assign(value.url)}>
+                        <div className="thumbnail">
+                            <Images url={value.urlToImage}/>
+                            <Title title={value.title}/>
+                            <Description data={value.description}/>
+                        </div>
+                    </li>:null}
+                    </div>
                     )
 
+
                 })}
-
-
+                  </div>
+              </ul>
 
 
                 </div>

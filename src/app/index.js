@@ -5,7 +5,6 @@ import Routes from './containers/Route.js';
 const App = () => {
   return (
     <div>
-      <h1>Main Application</h1>
       <BrowserRouter>
         <Routes />
       </BrowserRouter>

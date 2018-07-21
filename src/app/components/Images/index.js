@@ -6,7 +6,7 @@ export class Images extends React.Component {
     }
     render(){
         return (
-            <img src={this.props.url}/>
+            <img src={this.props.url} className="img-responsive" />
         );
     }
 }

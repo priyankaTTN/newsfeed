@@ -23087,11 +23087,6 @@ var App = function App() {
     'div',
     null,
     _react2.default.createElement(
-      'h1',
-      null,
-      'Main Application'
-    ),
-    _react2.default.createElement(
       _reactRouterDom.BrowserRouter,
       null,
       _react2.default.createElement(_Route2.default, null)
@@ -25722,16 +25717,34 @@ var NewsFeed = function (_React$Component) {
             if (_lodash2.default.isEmpty(abc)) return null;
             return _react2.default.createElement(
                 'div',
-                null,
-                abc.map(function (value, index) {
-                    return _react2.default.createElement(
-                        'li',
-                        { key: index },
-                        _react2.default.createElement(_Title.Title, { title: value.title }),
-                        _react2.default.createElement(_Images.Images, { url: value.urlToImage }),
-                        _react2.default.createElement(_Description.Description, { data: value.description })
-                    );
-                })
+                { className: 'container' },
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'list-inline' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row row-eq-height' },
+                        abc.map(function (value, index) {
+                            return _react2.default.createElement(
+                                'div',
+                                null,
+                                !_lodash2.default.isEmpty(value.title) && !_lodash2.default.isEmpty(value.urlToImage) && !_lodash2.default.isEmpty(value.description) ? _react2.default.createElement(
+                                    'li',
+                                    { className: 'col-md-4', key: index, onClick: function onClick() {
+                                            return window.location.assign(value.url);
+                                        } },
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'thumbnail' },
+                                        _react2.default.createElement(_Images.Images, { url: value.urlToImage }),
+                                        _react2.default.createElement(_Title.Title, { title: value.title }),
+                                        _react2.default.createElement(_Description.Description, { data: value.description })
+                                    )
+                                ) : null
+                            );
+                        })
+                    )
+                )
             );
         }
     }]);
@@ -44868,7 +44881,7 @@ var Title = exports.Title = function (_React$Component) {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                'h2',
+                'h4',
                 null,
                 this.props.title
             );
@@ -44914,9 +44927,9 @@ var Images = exports.Images = function (_React$Component) {
     }
 
     _createClass(Images, [{
-        key: 'render',
+        key: "render",
         value: function render() {
-            return _react2.default.createElement('img', { src: this.props.url });
+            return _react2.default.createElement("img", { src: this.props.url, className: "img-responsive" });
         }
     }]);
 
