@@ -13,23 +13,30 @@ class NewsFeed extends React.Component {
     componentWillMount(){
         this.props.dispatch(newsData())
     }
+    componentWillReceiveProps(nextProps){
+        const aa =_.get(nextProps.newsFeed.detail,'data.articles');
+        console.log(aa,'********')
+    }
     render() {
-        const aa =_.get(this.props.newsFeed.detail,'data.articles');
-        console.log(aa,'aa')
+        const abc =_.get(this.props.newsFeed.detail,'data.articles');
+        if(_.isEmpty(abc)) return null;
         return(
-           <h1>gggg</h1>
-            // <div>
-            //     <ul>
-            //         aa.map((value,key) => {
-            //         <li key={key}>
-            //             {value}
-            //             // <Title />
-            //             // <Images />
-            //             // <Description />
-            //         </li>
-            //     })
-            //         </ul>
-            // </div>
+            <div>
+                {abc.map((value, index) =>{
+                    return(
+                        <li key={index}>
+                            <Title title={value.title} />
+                            <Images url={value.urlToImage} />
+                            <Description data={value.description} />
+                        </li>
+                    )
+
+                })}
+
+
+
+
+                </div>
         );
     }
 }

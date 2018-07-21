@@ -1,9 +1,12 @@
 import React from 'react';
 
-export const Images = () => {
-    return (
-        <div>
-            <img src ={'./assets/images/News-Feed-Banner.png'} />
-        </div>
-    );
+export class Images extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            <img src={this.props.url}/>
+        );
+    }
 }
